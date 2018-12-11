@@ -1,2 +1,0 @@
-# shugo
-shugo 8
