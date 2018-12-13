@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Shugo - map</title>
+<!--library: three.js-->
+<script src="library/three.js"></script>
+<!--camera controls-->
+<script src="controls/mapControls.js"></script>
+
+
+
+<!--environment: plane en skybox-->
+<script src="environment/mapPlane.js"></script>
+<script src="environment/SkyWorld.js"></script>
+<!--cities-->
+<!--mountains-->
+<script src="buildings/mountain.js"></script>
+<script src="world/mountains.js"></script>
+<!--props-->
+
+<!--animals-->
+
+<!--collision detection-->
+<script src="collision/mapCollision.js"></script>
+<!--styling-->
+<link rel="stylesheet" type="text/css" href="Styling.css">
+</head>
+<body class="ng-scope" style="margin: 0px; background-color: #d8e7ff; overflow: hidden;" onload="loadImperium(),GameLoop()">
+<div class="parent" id="parent">  
+   <!--customcanvas-->       
+<div height="400" width="800" class="customcanvas" id="customcanvas"></div>
+        <!--hud-->
+                <div id="content-frame" ng-controller="HudState" class="ng-scope">
+                                <div id="canvas-container">
+                                    <div id="canvas-align">
+                                        <canvas id="webgl-canvas" width="800" height="400"></canvas>
+                                        <div id="hud" ng-class="{visible: style.visible, transparent: style.transparent, perspective: style.perspective, animated: style.animated}" class="visible">
+                                            <div id="weapon" class="ng-binding">
+                                                
+                                            </div>
+                                            <div id="ammo" class="ng-binding">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--menu-->
+                        <div id="menu" class="ng-menu">
+                                <div id="content-frame" class="ng-scope">
+                                        <div id="canvas-container">
+                                                <div id="quit">
+                                                        <button id="quitbutton">Quit</button>                                                        
+                                                </div>
+                                                <div id="resume">
+                                                        <button id="resumebutton">Resume</button>
+                                                </div>
+                                        </div>
+                                        
+                                </div>
+                                        
+                        </div>
+</div>
+<!--loaders-->
+<script src="loaders/OBJLoader.js"></script>
+<script src="loaders/MTLLoader.js"></script>
+<script src="loaders/ModelLoader.js"></script>
+<script>
+//collision vars
+var MovingCube;
+//collidable towns
+var collidableMeshList = [];
+var townTypes = [];
+var townNames = [];
+//no show menu
+var gamestart = document.getElementById("menu");
+gamestart.style.display = "none";  
+//updater
+var updateFcts = [];
+//scene
+var scene = new THREE.Scene();
+//renderer
+var renderer = new THREE.WebGLRenderer( { antialias: false } );
+//window
+canvasWidth = window.innerWidth * 0.98; //screen.width; //800;
+canvasHeight = window.innerHeight - 100; //400;
+renderer.setSize( canvasWidth, canvasHeight );      
+//append object to it
+document.getElementById("customcanvas").appendChild(renderer.domElement);
+//camera
+var camera = new THREE.PerspectiveCamera(45, canvasWidth / canvasHeight, 0.01, 5800);
+camera.position.x = -377;
+camera.position.y = 15;
+camera.position.z = 150;
+//lighting 
+var light = new THREE.HemisphereLight( 0xfffff0, 0x101020, 1.0 );
+light.position.set( 0, 900, 100 );
+scene.add( light );
+//plane
+var planeroad = new Plane(3800,4000,"shugo_map");
+scene.add(planeroad);  
+//skybox
+var skyBox = new SkyWorld(3800,4000,4000);
+scene.add( skyBox );
+//cities
+
+//mountains
+var halfheight = 4000 / 2;
+var halfwidth = 3800 / 2;
+mountainMaker();
+//moving cube
+var cubeGeometry = new THREE.CylinderGeometry(5,5,20,4);
+var wireMaterial = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe:true, visible:false } );
+MovingCube = new THREE.Mesh( cubeGeometry, wireMaterial );
+MovingCube.position.set(camera.position.x, camera.position.y, camera.position.z);
+scene.add( MovingCube );  
+//Camera Controls
+var controls = new THREE.FirstPersonControls( camera );
+controls.lookSpeed = 0.05;
+controls.lookVertical = false; //if true vertical look on mousemovement
+//Locking the pointer to the game
+document.getElementById("parent").addEventListener( 'click', function ( event ) {
+        lock();
+}, false );
+function lock(rawr) {
+        document.getElementById("parent").requestPointerLock();
+} 
+//initial economy variables
+var totalItem;
+var totalCoin = "viewing";
+var eItem ="Japan";
+//initial item
+totalItem = totalCoin;
+//show HUD economy functions
+function appendCoin(){        
+        document.getElementById('ammo').innerHTML = totalItem;}
+function appendItem(){
+        document.getElementById('weapon').innerHTML = eItem;}
+//hit registration collision
+function clearText()
+{   document.getElementById('message').innerHTML = '....';}
+function appendText(txt)
+{   document.getElementById('message').innerHTML += txt;}
+//collision vars
+var collisionX;
+var collisionZ;
+//economy HUD
+appendCoin();
+appendItem();
+
+function GameLoop(){
+        //update function
+        updateFcts.push(function(delta,now){
+                //controls update
+                controls.update( delta ); 
+                //render the scene
+                renderer.render( scene, camera );
+                //moving cube position and rotation
+                MovingCube.position.x = camera.position.x;
+                MovingCube.position.y = camera.position.y;
+                MovingCube.position.z = camera.position.z;
+                MovingCube.rotation.y = camera.rotation.y;                       
+        })
+        
+        //loop runner
+        var lastTimeMsec= null
+        requestAnimationFrame(function animate(nowMsec){
+                // keep looping
+                requestAnimationFrame( animate );
+                // measure time
+                lastTimeMsec = lastTimeMsec || nowMsec-1000/60
+                var deltaMsec = Math.min(200, nowMsec - lastTimeMsec)
+                lastTimeMsec = nowMsec
+                // call each update function
+                updateFcts.forEach(function(updateFn){
+                        updateFn(deltaMsec/1000, nowMsec/1000)
+                })
+        })
+
+}
+</script>
+</div>
+<div id="game" class="game">
+        <!--message-->
+        <div id="message" class="ce"></div>
+        <!--minimap-->
+        <div id="minimap" class="ce">
+                <canvas id="myCanvas" width="40" height="40" style="border:1px solid #d3d3d3;">Your browser does not support the HTML5 canvas tag.</canvas>
+        </div>
+        <!--music-->
+        <div id="sound" class="ce">                
+                <audio id="imperia" loop><source id="parade" src="music/sakura_sakura.mp3" type="audio/mp3"></audio>   
+                <audio id="soundpar" autoplay><source id="soundscape" src="sfx/atmosphere/wind.mp3" type="audio/mp3"></audio> 
+                <button onclick="changeImperium()" type="button">Change Music</button>
+                <button onclick="pauseImperium()" type="button">Pause Music</button>
+                <button onclick="playImperium()" type="button">Play Music</button>
+                <input type="hidden" id="number" value="2"/>
+                <!--sound scripts-->
+                <script src="sound/musicplayer.js"></script>
+                <script src="sound/soundplayer.js"></script>
+        </div>
+</div>
+</body>
+</html>
