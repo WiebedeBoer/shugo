@@ -1,72 +1,73 @@
 function mountainMaker(){
     //kinai
-    mountain1 = new Mountain(2276 - halfwidth,1968 - halfheight);
+    mountain1 = new Mountain(2326 - halfwidth,1968 - halfheight); //1,022368
     scene.add( mountain1 );
-    mountain2 = new Mountain(2178 - halfwidth,2092 - halfheight);
+    mountain2 = new Mountain(2226 - halfwidth,2092 - halfheight);
     scene.add( mountain2 );
-    mountain3 = new Mountain(2298 - halfwidth,2015 - halfheight);
+    mountain3 = new Mountain(2349 - halfwidth,2015 - halfheight);
     scene.add( mountain3 );    
-    mountain4 = new Mountain(2179 - halfwidth,2214 - halfheight);
+    mountain4 = new Mountain(2227 - halfwidth,2214 - halfheight);
     scene.add( mountain4 );
-    mountain5 = new Mountain(2182 - halfwidth,2352 - halfheight);
-    scene.add( mountain5 );    
-    mountain6 = new Mountain(1970 - halfwidth,2666 - halfheight);
+    mountain5 = new Mountain(2230 - halfwidth,2352 - halfheight);
+    scene.add( mountain5 );  
+    //yamato  
+    mountain6 = new Mountain(2014 - halfwidth,2680 - halfheight);
     scene.add( mountain6 );
-    mountain7 = new Mountain(2040 - halfwidth,2656 - halfheight);
+    mountain7 = new Mountain(2085 - halfwidth,2670 - halfheight);
     scene.add( mountain7 );
-    mountain8 = new Mountain(2097 - halfwidth,2628 - halfheight);
+    mountain8 = new Mountain(2143 - halfwidth,2640 - halfheight);
     scene.add( mountain8 );
     //tsugoku peninsula
-    mountain9 = new Mountain(1655 - halfwidth,2236 - halfheight);
+    mountain9 = new Mountain(1692 - halfwidth,2236 - halfheight);
     scene.add( mountain9 );
-    mountain10 = new Mountain(2202 - halfwidth,1960 - halfheight);
+    mountain10 = new Mountain(2251 - halfwidth,1960 - halfheight);
     scene.add( mountain10 );
-    mountain11 = new Mountain(2283 - halfwidth,1917 - halfheight);
+    mountain11 = new Mountain(2334 - halfwidth,1917 - halfheight);
     scene.add( mountain11 );
-    mountain12 = new Mountain(1421 - halfwidth,2247 - halfheight);
+    mountain12 = new Mountain(1452 - halfwidth,2247 - halfheight);
     scene.add( mountain12 );
-    mountain13 = new Mountain(1386 - halfwidth,2234 - halfheight);
+    mountain13 = new Mountain(1417 - halfwidth,2234 - halfheight);
     scene.add( mountain13 );
-    mountain14 = new Mountain(1168 - halfwidth,2503 - halfheight);
+    mountain14 = new Mountain(1194 - halfwidth,2503 - halfheight);
     scene.add( mountain14 );
-    mountain15 = new Mountain(1256 - halfwidth,2336 - halfheight);
+    mountain15 = new Mountain(1284 - halfwidth,2336 - halfheight);
     scene.add( mountain15 );
-    mountain16 = new Mountain(1133 - halfwidth,2309 - halfheight);
+    mountain16 = new Mountain(1158 - halfwidth,2309 - halfheight);
     scene.add( mountain16 );
     //shikoku
-    mountain17 = new Mountain(1311 - halfwidth,2756 - halfheight);
+    mountain17 = new Mountain(1340 - halfwidth,2773 - halfheight);
     scene.add( mountain17 );
-    mountain18 = new Mountain(1269 - halfwidth,2773 - halfheight);
+    mountain18 = new Mountain(1297 - halfwidth,2788 - halfheight);
     scene.add( mountain18 );
-    mountain19 = new Mountain(1541 - halfwidth,2736 - halfheight);
+    mountain19 = new Mountain(1575 - halfwidth,2751 - halfheight);
     scene.add( mountain19 );
-    mountain20 = new Mountain(1343 - halfwidth,2734 - halfheight);
+    mountain20 = new Mountain(1373 - halfwidth,2749 - halfheight);
     scene.add( mountain20 );
     //tsushima
-    mountain21 = new Mountain(237 - halfwidth,2500 - halfheight);
+    mountain21 = new Mountain(242 - halfwidth,2509 - halfheight);
     scene.add( mountain21 );
     //kyushu
-    mountain22 = new Mountain(491 - halfwidth,3106 - halfheight);
+    mountain22 = new Mountain(501 - halfwidth,3132 - halfheight);
     scene.add( mountain22 );
-    mountain23 = new Mountain(431 - halfwidth,3030 - halfheight);
+    mountain23 = new Mountain(440 - halfwidth,3052 - halfheight);
     scene.add( mountain23 );
-    mountain24 = new Mountain(687 - halfwidth,2863 - halfheight);
+    mountain24 = new Mountain(702 - halfwidth,2881 - halfheight);
     scene.add( mountain24 );
-    mountain25 = new Mountain(790 - halfwidth,2936 - halfheight);
+    mountain25 = new Mountain(807 - halfwidth,2956 - halfheight);
     scene.add( mountain25 );
-    mountain26 = new Mountain(759 - halfwidth,2995 - halfheight);
+    mountain26 = new Mountain(776 - halfwidth,3018 - halfheight);
     scene.add( mountain26 );
-    mountain27 = new Mountain(780 - halfwidth,3079 - halfheight);
+    mountain27 = new Mountain(797 - halfwidth,3102 - halfheight);
     scene.add( mountain27 );
-    mountain28 = new Mountain(691 - halfwidth,3176 - halfheight);
+    mountain28 = new Mountain(706 - halfwidth,3202 - halfheight);
     scene.add( mountain28 );
-    mountain29 = new Mountain(713 - halfwidth,3253 - halfheight);
+    mountain29 = new Mountain(728 - halfwidth,3278 - halfheight);
     scene.add( mountain29 );
-    mountain30 = new Mountain(801 - halfwidth,3251 - halfheight);
+    mountain30 = new Mountain(818 - halfwidth,3277 - halfheight);
     scene.add( mountain30 );
-    mountain31 = new Mountain(654 - halfwidth,3376 - halfheight);
+    mountain31 = new Mountain(668 - halfwidth,3407 - halfheight);
     scene.add( mountain31 );
-    mountain32 = new Mountain(637 - halfwidth,3520 - halfheight);
+    mountain32 = new Mountain(651 - halfwidth,3553 - halfheight);
     scene.add( mountain32 );
     //kanto
     mountain33 = new Mountain(2668 - halfwidth,1699 - halfheight);
@@ -133,6 +134,8 @@ function mountainMaker(){
     scene.add( mountain63 );
     mountain64 = new Mountain(3105 - halfwidth,1353 - halfheight);
     scene.add( mountain64 );
+    mountain84 = new Mountain(2621 - halfwidth,2097 - halfheight);
+    scene.add( mountain84 );
     //tohoku
     mountain65 = new Mountain(3374 - halfwidth,1274 - halfheight);
     scene.add( mountain65 );
@@ -172,23 +175,4 @@ function mountainMaker(){
     scene.add( mountain82 );
     mountain83 = new Mountain(3248 - halfwidth,399 - halfheight);
     scene.add( mountain83 );
-
-    /*
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    mountain = new Mountain( - halfwidth, - halfheight);
-    scene.add( mountain );
-    */
 }
